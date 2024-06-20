@@ -24,9 +24,12 @@ echo "<br>";
 echo "<hr>";
 
 function percent_cal($num,$max){
-    
+    $percentage=(($num/$max)*100);
+    return $percentage;
 }
-
+$mark=20;
+$passmark=40;
+echo "You have got ", percent_cal($mark,$passmark), "% out of 100%";
 
 
 /*function sum($x, $y) {
