@@ -29,7 +29,7 @@ function percent_cal($num,$max){
 }
 $mark=20;
 $passmark=40;
-echo "You have got ", percent_cal($mark,$passmark), "% out of 100%";
+echo "You have got ", percent_cal($mark,$passmark), "% of $mark maked  out of $passmark";
 
 
 /*function sum($x, $y) {
