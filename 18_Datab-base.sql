@@ -38,6 +38,12 @@ INSERT INTO students (Name,Age,Country) VALUES ('Ben',27,'Nigeria');
 INSERT INTO students (Name,Age,Country) VALUES ('Obine',33,'Ivorycost');
 INSERT INTO students (Name,Age,Country) VALUES ('Phiona',22,'America');
 
+--inserting shortcut
+
+INSERT INTO students (Name,Age,Country) VALUES ('Jolly',22,'America'),('Ahummed',62,'Ivory Coast'),('Calib',12,'Sudan'),('Amanda',29,'Japan'),
+('Annet',21,'South Korea')
+INSERT INTO students (Name,Age,Country) VALUES('Jovia',22,'France');
+
 --Selecting data from database
 SELECT*FROM students;
 
@@ -67,3 +73,38 @@ SELECT*FROM students ORDER BY Name DESC;--Deccending order
 --Delete data
 DELETE FROM students WHERE ID=12; 
 
+--Selecting the maximum
+SELECT MAX(Age) FROM students;
+SELECT MAX(Age) FROM students WHERE country IN ('Congo','Uganda');
+--Selecting the minimum
+SELECT MIN(Age) FROM students;
+--Selecting the Average
+SELECT AVG(Age) FROM students;
+
+--Nested quary
+SELECT*FROM students WHERE Age=(SELECT MAX(Age) FROM students);
+SELECT*FROM students WHERE Age=(SELECT MIN(Age) FROM students);
+SELECT*FROM students WHERE country IN ('Congo','Uganda','Tanzania') WHERE Age=(SELECT MAX(Age) FROM students);
+
+
+--Display by Linking two tables using a foregin key
+--New table
+CREATE TABLE `practice`.`course` (`ID` INT NOT NULL AUTO_INCREMENT , `Programme` VARCHAR(255) NOT NULL , `Tuition_fees` INT NOT NULL , PRIMARY KEY (`ID`)) ENGINE = InnoDB;
+--Adding new coloumn in Table
+ALTER TABLE course ADD course_owner_id INT;
+
+--Adding data to the new table
+INSERT INTO course (Programme,Tuition_fees) VALUES ('BICT',1400000,1);
+INSERT INTO course (Programme,Tuition_fees) VALUES ('CIVIL ENG',1600000,2);
+INSERT INTO course (Programme,Tuition_fees) VALUES ('AUTOMOTIV ENG',2200000,13);
+INSERT INTO course (Programme,Tuition_fees) VALUES ('MECHNICAL ENG',1400000,16);
+INSERT INTO course (Programme,Tuition_fees) VALUES ('MDD',1000000,6);
+INSERT INTO course (Programme,Tuition_fees) VALUES ('BBA',2300000,20);
+INSERT INTO course (Programme,Tuition_fees) VALUES ('LAW',3200000,17);
+INSERT INTO course (Programme,Tuition_fees) VALUES ('ART_&_DESIGIN',1800000,21);
+INSERT INTO course (Programme,Tuition_fees) VALUES ('PETROLIUM',2600000,7);
+INSERT INTO course (Programme,Tuition_fees) VALUES ('MID-WIFERY',1200000,9);
+
+
+SELECT*FROM course,students;--Here te results will show in a cartesian format 
+SELECT*FROM course,students WHERE course.ID=students.ID;
