@@ -1,7 +1,7 @@
 <?php
 require_once 'config.php';
 if (isset($_POST['add'])) {
-    if ( !empty($_POST['task'] /* != "" */)) {
+    if ( !empty($_POST['task'])) {
         $task = $_POST['task'];
         /* $addtasks="INSERT INTO `task`(task,status) VALUES('', '$task', 'Pending') */
  
